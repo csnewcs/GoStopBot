@@ -1,4 +1,5 @@
 obj/
 bin/
 images/
-# config.json
+config.json
+TestGuild.txt

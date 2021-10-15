@@ -26,6 +26,7 @@ namespace GoStopBot
                     await SlashCommand(interaction as SocketSlashCommand);
                     break;
                 case InteractionType.MessageComponent:
+                    await ButtonClicked(interaction as SocketMessageComponent);
                     break;
             }
         }
@@ -43,6 +44,14 @@ namespace GoStopBot
                     startThread.Start();
                     // await StartGoStop.StartGoStopCommand(command);
                     break;
+            }
+        }
+        private async Task ButtonClicked(SocketMessageComponent component)
+        {
+            string id = component.Data.CustomId;
+            if(id.Contains("JOINGOSTOP"))
+            {
+                await StartGoStop.JoinGoStopCommand(component);
             }
         }
     }
